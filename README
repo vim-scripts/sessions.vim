@@ -1,0 +1,28 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=780
+
+This plugin introduces following additions to regular session management (see
+help on viminfo, mkview, mksession):
+- short commands for session saving, loading, clearing and merging:
+  :SS <name> --- save session <name>
+  :SL <name> --- load session <name>
+  :SN <name> --- clear buffer list and set new current session name.
+  :SS without parameter saves current session loaded with :SL or created
+      with SN.
+  :SM <name> --- merge session <name> into current one.
+
+- All sessions are stored and loaded out of specific directory named
+  'sessions' in &runtimepath. 
+  Note: it is nessessary to create this directory manually before using
+  plugin. E.g. 'mkdir -p ~/.vim/sessions' will do on Unix-like systems.
+
+- Session name argument does not need to have path prefix or extension. It's
+  also may be completed from already saved session names.
+
+- Major difference to built-in session mechanism is that saved session by
+  default does not contain any mapping, window layout, line number or
+  unlisted buffer information whatsoever. There's just file list and current
+  working directory/file. This is done intentionally, with robustness and
+  loading speed in mind (see help on viminfo to learn how to store file
+  marks across sessions). To enable old-stype session files, set variable
+  g:Sessions_Old_style = 1 in your .vimrc.
+
